@@ -23,3 +23,8 @@ resource "vault_policy" "go_releaser" {
   policy = file("${path.module}/go_releaser_reader.hcl")
 }
 
+resource "vault_policy" "azure_sp_infra_reader" {
+  name = "azure_sp_infra_reader"
+  policy = file("${path.module}/azure_sp_infra_reader.hcl")
+}
+
