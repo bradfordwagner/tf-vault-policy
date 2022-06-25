@@ -18,3 +18,8 @@ resource "vault_policy" "bradford_argo_events_reader" {
   policy = file("${path.module}/bradford_argo_events_reader.hcl")
 }
 
+resource "vault_policy" "go_releaser" {
+  name = "go_releaser_reader"
+  policy = file("${path.module}/go_releaser_reader.hcl")
+}
+

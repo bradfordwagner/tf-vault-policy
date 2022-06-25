@@ -33,3 +33,12 @@ resource "vault_kubernetes_auth_backend_role" "cicd_bradford_argo_events_reader"
   token_policies                   = ["bradford_argo_events_reader"]
 }
 
+resource "vault_kubernetes_auth_backend_role" "go_releaser" {
+  count                            = var.k8s_cluster == "cicd" ? 1 : 0
+  backend                          = vault_auth_backend.current.path
+  bound_service_account_names      = ["default"]
+  bound_service_account_namespaces = ["argo"]
+  role_name                        = "go_releaser_reader"
+  token_policies                   = ["go_releaser_reader"]
+}
+
