@@ -1,6 +1,4 @@
-provider "vault" {
-  address = "http://localhost:30003"
-}
+provider "vault" {}
 
 module "policies" {
   source = "./modules/policies"
