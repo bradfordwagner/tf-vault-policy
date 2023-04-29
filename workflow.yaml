@@ -35,11 +35,12 @@ spec:
             value: true
           - name: vault_role
             value: vault_policy_scaffolding
-          - name: vault_env_secrets_paths
-            value: |
-              ["secret/azure/sp/infra"]
           - name: vault_issue_token
             value: true
+          - name: csi_class
+            value: sp-infra
+          - name: csi_secret
+            value: sp-infra
         templateRef:
           name: flavor-terraform-template
           template: main
