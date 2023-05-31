@@ -28,3 +28,8 @@ resource "vault_policy" "azure_sp_infra_reader" {
   policy = file("${path.module}/azure_sp_infra_reader.hcl")
 }
 
+resource "vault_policy" "acr_sandbox_reader" {
+  name = "acr_sandbox_reader"
+  policy = file("${path.module}/acr_sandbox_reader.hcl")
+}
+
