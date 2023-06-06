@@ -70,3 +70,12 @@ resource "vault_kubernetes_auth_backend_role" "cicd_azure_acr_sandbox_reader" {
   token_policies                   = ["acr_sandbox_reader"]
 }
 
+resource "vault_kubernetes_auth_backend_role" "cicd_azure_acr_prod_reader" {
+  count                            = var.k8s_cluster == "cicd" ? 1 : 0
+  backend                          = vault_auth_backend.current.path
+  bound_service_account_names      = ["default"]
+  bound_service_account_namespaces = ["argo"]
+  role_name                        = "acr_prod_reader"
+  token_policies                   = ["acr_prod_reader"]
+}
+

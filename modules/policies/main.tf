@@ -33,3 +33,8 @@ resource "vault_policy" "acr_sandbox_reader" {
   policy = file("${path.module}/acr_sandbox_reader.hcl")
 }
 
+resource "vault_policy" "acr_prod_reader" {
+  name = "acr_prod_reader"
+  policy = file("${path.module}/acr_prod_reader.hcl")
+}
+
