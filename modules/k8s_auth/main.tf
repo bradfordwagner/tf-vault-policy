@@ -30,8 +30,8 @@ resource "vault_kubernetes_auth_backend_role" "cicd_vault_policy_scaffolding" {
 resource "vault_kubernetes_auth_backend_role" "cicd_quay" {
   count                            = var.k8s_cluster == "cicd" ? 1 : 0
   backend                          = vault_auth_backend.current.path
-  bound_service_account_names      = ["default"]
-  bound_service_account_namespaces = ["argo"]
+  bound_service_account_names      = ["default", "docker-driver"]
+  bound_service_account_namespaces = ["argo", "docker-driver"]
   role_name                        = "quay_reader"
   token_policies                   = ["quay_reader"]
   alias_name_source                = "serviceaccount_name"
