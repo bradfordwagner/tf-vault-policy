@@ -6,6 +6,30 @@ resource "vault_auth_backend" "current" {
   }
 }
 
+# resource "vault_mount" "kubernetes_mount" {
+#   path        = "${var.k8s_cluster}"
+#   # path        = "kubernetes/${var.k8s_cluster}"
+#   type        = "kubernetes"
+#   description = "Kubernetes role for Vault"
+#   # options = {
+#     # kubernetes_host         = "https://kubernetes.default.svc"
+#     # kubernetes_ca_cert      = "<kubernetes_ca_certificate>"
+#     # kubernetes_token_reviewer_jwt = "some_jwt_token"
+#     # kubernetes_token_reviewer_role = "role_name"
+#     # kubernetes_jwt_auth_path = "kubernetes/auth"
+#     # kubernetes_issuer       = "kubernetes.io/token"
+#     # kubernetes_pem_keys     = "<pem_keys>"
+#     # kubernetes_service_account = "default"
+#     # kubernetes_service_account_namespace = "default"
+#     # kubernetes_service_account_jwt = "<service_account_jwt>"
+#     # kubernetes_pod_template_file = "<pod_template_file>"
+#     # kubernetes_ttl          = "1h"
+#     # kubernetes_max_ttl      = "24h"
+#     # token_policies          = ["default"]
+#     # token_period            = "1h"
+#   # }
+# }
+
 resource "vault_kubernetes_auth_backend_role" "smoketest" {
   backend                          = vault_auth_backend.current.path
   role_name                        = "smoketest"
