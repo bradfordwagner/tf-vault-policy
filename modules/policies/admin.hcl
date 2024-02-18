@@ -57,4 +57,8 @@ path "sys/mounts"
 {
   capabilities = ["read"]
 }
+path "sys/internal/ui/mounts"
+{
+  capabilities = ["read"]
+}
 
