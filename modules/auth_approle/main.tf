@@ -1,3 +1,7 @@
+locals {
+  seconds_in_a_day = 86400
+}
+
 resource "vault_auth_backend" "approle" {
   path = "approle"
   type = "approle"
@@ -13,4 +17,5 @@ resource "vault_approle_auth_backend_role" "gh_actions" {
   backend        = vault_auth_backend.approle.path
   role_name      = "gh_terraform"
   token_policies = ["azure_sp_infra_reader"]
+  secret_id_ttl  =  30 * local.seconds_in_a_day
 }
