@@ -11,6 +11,9 @@ resource "vault_mount" "kubernetes_mount" {
   path        = "kubernetes/${var.k8s_cluster}"
   type        = "kubernetes"
   description = "Kubernetes secrets engine"
+  options = {
+    "listing_visibility" = "unauth"
+  }
 }
 
 resource "vault_kubernetes_auth_backend_role" "smoketest" {
