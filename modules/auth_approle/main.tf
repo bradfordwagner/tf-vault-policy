@@ -5,6 +5,9 @@ locals {
 resource "vault_auth_backend" "approle" {
   path = "approle"
   type = "approle"
+  tune {
+    max_lease_ttl = "2160h" # 90 days
+  }
 }
 
 resource "vault_approle_auth_backend_role" "k8s_auth_bootstrapper" {
