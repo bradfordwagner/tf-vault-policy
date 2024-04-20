@@ -6,16 +6,6 @@ resource "vault_auth_backend" "current" {
   }
 }
 
-# enable the kubernetes secrets backend - to issue kubeconfigs
-resource "vault_mount" "kubernetes_mount" {
-  path        = "kubernetes/${var.k8s_cluster}"
-  type        = "kubernetes"
-  description = "Kubernetes secrets engine"
-  options = {
-    "listing_visibility" = "unauth"
-  }
-}
-
 resource "vault_kubernetes_auth_backend_role" "smoketest" {
   backend                          = vault_auth_backend.current.path
   role_name                        = "smoketest"
